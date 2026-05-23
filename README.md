@@ -9,7 +9,7 @@ npm install
 npm run dev
 ```
 
-Opens on http://localhost:3000 (local development only)
+Opens on http://localhost:3000 or higher if ports are in use (check terminal output for actual URL)
 
 ---
 
@@ -263,7 +263,7 @@ npm run dev
 ## Next Steps
 
 1. **Setup** — Install dependencies: `npm install`
-2. **Development** — Run the dev server: `npm run dev` (opens on localhost:3000)
+2. **Development** — Run the dev server: `npm run dev` (check terminal output for the actual URL, e.g., localhost:3000-3006)
 3. **Content** — Create markdown files in `/src/content/blog`, `/src/content/pages`, `/src/content/services`
 4. **Build** — Run `npm run build` to create production-ready site
 5. **Deploy** — See SETUP.md for production deployment instructions
