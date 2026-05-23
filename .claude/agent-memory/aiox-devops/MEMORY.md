@@ -1,0 +1,3 @@
+- [olmeda-website lint debt](project_olmeda_website_lint_debt.md) — 166 pre-existing react/no-unescaped-entities errors on origin/master; do not use lint as a blocker until cleanup PR
+- [olmeda-website npm scripts](project_olmeda_website_scripts.md) — only lint + build defined; no test/typecheck (build does TS checking)
+- [Diagnostic checkout pollution](feedback_diagnostic_checkout_pollution.md) — never use `git checkout <other> -- .` to probe history; use git show / worktrees instead
