@@ -2,14 +2,14 @@
 
 A modern Next.js website for Olmeda Pet Studio, featuring blog content management with MDX, responsive design, and SEO optimization.
 
-## Quick Start
+## Quick Start (For Developers)
 
 ```bash
 npm install
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) in your browser.
+Opens on http://localhost:3000 (local development only)
 
 ---
 
@@ -21,13 +21,15 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 - **SEO:** Static Site Generation (SSG) for optimal Google indexing
 - **Styling:** CSS with design tokens (colors, spacing, typography)
 
-## Website Navigation
+## Website Structure
 
 ### Pages
 
-- **Homepage** — [http://localhost:3000/](http://localhost:3000/) — Hero section, service overview, CTA
-- **Blog Index** — [http://localhost:3000/blog](http://localhost:3000/blog) — All articles, category filters, search
-- **Blog Post** — [http://localhost:3000/blog/{slug}](http://localhost:3000/blog/marketing-strategies) — Individual article with metadata and sidebar
+- **Homepage** — `/` — Hero section, service overview, CTA
+- **Blog Index** — `/blog` — All articles, category filters, search
+- **Blog Post** — `/blog/{slug}` — Individual article with metadata and sidebar
+- **Service Pages** — `/services/{slug}` — Service descriptions with pricing and guarantees
+- **Static Pages** — `/{slug}` — About, Contact, and other pages
 
 ### Navigation Flow
 
@@ -43,89 +45,63 @@ Homepage
 
 ---
 
-## Blog System
+## Content Management System
 
-### Adding a New Blog Post
+### Adding Content (Blog Posts, Pages, Services)
 
-1. **Create MDX file** in `content/blog/`:
+**All content is markdown-based.** See `/src/content/README.md` for complete guidelines.
 
-```bash
-content/blog/your-post-title.mdx
-```
+### Quick Start
 
-2. **Add frontmatter metadata** (YAML at the top):
+1. **Create a markdown file** in the appropriate directory:
+   - Blog posts: `/src/content/blog/YYYY-MM-DD-slug-title.md`
+   - Pages: `/src/content/pages/page-name.md`
+   - Services: `/src/content/services/service-name.md`
 
-```mdx
+2. **Add YAML frontmatter** with metadata:
+
+```markdown
 ---
-title: "Your Post Title"
-description: "Brief summary of the post"
-date: "2026-05-22"
-category: "Marketing"
+title: "Your Title Here"
+slug: your-slug
+date: 2026-05-23
+description: "Short description for SEO (155-160 characters)"
+category: "SEO" (blog posts only)
 tags: ["tag1", "tag2"]
-image: "dog-yorkie"
-readTime: "5 min read"
 ---
 
-Your content starts here...
+# Your Content
+
+Write in markdown. Headers, lists, links, images all supported.
 ```
 
-3. **Write content in Markdown + JSX**:
+3. **The content automatically appears** on your site:
+   - `/blog/your-slug` for blog posts
+   - `/services/service-slug` for services
+   - `/{slug}` for pages
 
-```mdx
----
-title: "Growing Your Pet Business"
-description: "Strategies for client acquisition and retention"
-date: "2026-05-22"
-category: "Marketing"
-tags: ["growth", "client-acquisition"]
-image: "dog-yorkie"
-readTime: "5 min read"
----
+**For detailed guidelines**, see `/src/content/README.md`
 
-## Introduction
+### Metadata Fields
 
-Start with a compelling hook...
+**For Blog Posts:**
+- `title` — Post title (40-60 chars for SEO)
+- `slug` — URL identifier (kebab-case)
+- `date` — Publication date (YYYY-MM-DD)
+- `description` — SEO description (155-160 chars)
+- `author` — Author name
+- `category` — Topic category
+- `tags` — Array of topic tags
+- `image` — Image URL (optional)
+- `readTime` — Estimated read time (e.g., "5 min read")
+- `published` — Boolean (true to publish)
 
-### Subheading
-
-- Bullet point 1
-- Bullet point 2
-- Bullet point 3
-
-More content here...
-```
-
-4. **The post automatically appears** on `/blog` and at `/blog/your-post-title`
-
-### Blog Post Structure
-
-Each blog post has:
-
-- **Metadata in frontmatter:**
-  - `title` — Post title (appears as page heading)
-  - `description` — Short summary (appears in blog listing and SEO)
-  - `date` — Publication date (YYYY-MM-DD format)
-  - `category` — Content category (Marketing, Operations, Client Experience, Growth)
-  - `tags` — Array of tag strings (for filtering/organization)
-  - `image` — Image class reference (e.g., "dog-yorkie")
-  - `readTime` — Estimated read duration (e.g., "5 min read")
-
-- **Content in Markdown:**
-  - H2 headers (`##`) for sections
-  - Paragraphs, bullet lists, links
-  - Custom components (CTAs, callouts)
-  - JSX blocks for interactive content
-
-### Featured Image
-
-Image classes map to CSS background images. Common classes:
-
-- `dog-yorkie` — Yorkie dog photo
-- `dog-and-cat` — Dog and cat together
-- `dog-grooming` — Grooming service
-- `vet-check` — Veterinary visit
-
-These are defined in your global CSS with background images.
+**For Pages & Services:**
+- `title` — Page/service title
+- `slug` — URL identifier
+- `description` — SEO description
+- `image` — Featured image URL (optional)
+- `lastUpdated` — Last modification date
 
 ---
 
@@ -286,11 +262,11 @@ npm run dev
 
 ## Next Steps
 
-1. **Run the dev server** — `npm run dev`
-2. **Visit the homepage** — [http://localhost:3000](http://localhost:3000)
-3. **Explore the blog** — [http://localhost:3000/blog](http://localhost:3000/blog)
-4. **Add a new post** — Create `content/blog/your-post.mdx`
-5. **Deploy** — See SETUP.md for production deployment
+1. **Setup** — Install dependencies: `npm install`
+2. **Development** — Run the dev server: `npm run dev` (opens on localhost:3000)
+3. **Content** — Create markdown files in `/src/content/blog`, `/src/content/pages`, `/src/content/services`
+4. **Build** — Run `npm run build` to create production-ready site
+5. **Deploy** — See SETUP.md for production deployment instructions
 
 ---
 
