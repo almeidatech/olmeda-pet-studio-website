@@ -1,0 +1,52 @@
+{
+  "generated_at": "2026-05-23T00:00:00",
+  "project_name": "olmeda-pet-studio-website",
+  "bootstrap_agent": "devops (Gage)",
+  "bootstrap_mode": "interactive",
+  "system": {
+    "os": "Windows 11 Home 10.0.26200",
+    "architecture": "x64",
+    "shell": "PowerShell 7+"
+  },
+  "cli_tools": {
+    "git":      { "installed": true,  "version": "2.53.0.windows.2", "required": "essential" },
+    "gh":       { "installed": true,  "version": "2.88.1",           "required": "essential", "authenticated": true, "account": "almeidatech", "scopes": ["repo", "workflow", "read:org", "write:packages", "gist", "admin:public_key"] },
+    "node":     { "installed": true,  "version": "24.14.0",          "required": "essential" },
+    "npm":      { "installed": true,  "version": "11.9.0",           "required": "essential" },
+    "pnpm":     { "installed": true,  "version": "10.33.0",          "required": "optional" },
+    "docker":   { "installed": true,  "version": "29.2.1",           "required": "recommended" },
+    "supabase": { "installed": true,  "version": "2.101.0",          "required": "essential",   "authenticated": true, "orgs_visible": ["OLMEDATECH", "OlmedaTech", "Paula", "YSMN STUDIO"], "installed_via": "scoop" },
+    "railway":  { "installed": false, "version": null,               "required": "skipped",     "reason": "project uses Hetzner VPS + Docker Swarm, not Railway" },
+    "coderabbit": { "installed": false, "version": null,             "required": "deferred",    "reason": "WSL bash not available; revisit before Phase 3 pre-push" },
+    "scoop":    { "installed": true,  "version": "latest",           "required": "tooling",     "installed_via": "https://get.scoop.sh" }
+  },
+  "repository": {
+    "initialized": true,
+    "default_branch": "master",
+    "origin": "https://github.com/almeidatech/olmeda-pet-studio-website.git",
+    "upstream": "https://github.com/amandaalmeidda/olmeda-pet-studio-website.git",
+    "working_tree_dirty": true,
+    "uncommitted": ["docs/discovery.md"],
+    "ahead_of_origin": 1
+  },
+  "project_structure": {
+    "package_json_present": true,
+    "package_name_mismatch": { "folder": "olmeda-petstudio", "package": "olmeda-website", "repo": "olmeda-pet-studio-website", "resolution": "keep as-is per user decision" },
+    "aiox_dir_created": true,
+    "docs_dir_present": true,
+    "existing_artifacts": ["docs/discovery.md", "docs/proposed-plan.md", "docs/frontend-reference/", "MIGRATION_PLAN.md", "SETUP.md", "supabase/"]
+  },
+  "validation": {
+    "essential_complete": true,
+    "recommended_complete": false,
+    "ready_for_development": true,
+    "ready_for_phase_1": true,
+    "deferred_items": ["coderabbit CLI install", "supabase project link (Phase 1 decision)"]
+  },
+  "next_step": {
+    "phase": "Phase 1 - Discovery & Planning",
+    "agent": "@analyst",
+    "command": "*create-doc project-brief",
+    "input_artifacts": ["docs/discovery.md", "docs/proposed-plan.md"]
+  }
+}

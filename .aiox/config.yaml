@@ -1,0 +1,52 @@
+# AIOX Project Configuration
+version: 2.1.0
+
+project:
+  name: olmeda-pet-studio-website
+  folder_name: olmeda-petstudio
+  package_name: olmeda-website
+  type: brownfield-extension  # existing Next.js site + greenfield CMS app
+  created: 2026-05-23
+
+repository:
+  provider: github
+  origin: https://github.com/almeidatech/olmeda-pet-studio-website
+  upstream: https://github.com/amandaalmeidda/olmeda-pet-studio-website
+  default_branch: master
+  account: almeidatech
+
+environment:
+  bootstrapped: true
+  bootstrap_date: 2026-05-23
+  bootstrap_mode: interactive
+  os: Windows 11
+
+workflow:
+  current: greenfield-fullstack
+  scope: cms-app  # site exists; greenfield workflow scoped to new CMS app
+  phase: 0-bootstrap-complete
+  next: phase-1-discovery-planning
+
+permissions:
+  mode: ask
+
+settings:
+  auto_update_status: true
+  quality_gates_enabled: true
+
+user_profile: advanced  # auto-selected per YOLO mode (experienced developer)
+default_language: pt-BR
+
+infra_target:
+  hosting: hetzner-vps
+  orchestrator: docker-swarm
+  proxy: traefik
+  backend: supabase-cloud
+  ci: github-actions
+  registry: ghcr.io
+  notes: |
+    Mirrors aylas-site / nicoletti-cigars patterns on same VPS.
+    Supabase org for CMS to be selected in Phase 1 (architect).
+
+cli_tools_installed_during_bootstrap:
+  - supabase@2.101.0 (via scoop)

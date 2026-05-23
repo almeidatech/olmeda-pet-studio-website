@@ -3,6 +3,9 @@ node_modules/
 dist/
 build/
 *.log
+
+# Supabase CLI runtime cache
+supabase/.temp/
 .env
 .env.local
 .env.*.local
