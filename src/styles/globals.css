@@ -457,13 +457,14 @@ a {
 
 /* Hero */
 .hero {
-  padding: 64px 0;
+  padding: 64px 0 80px;
+  background: var(--bg-page);
 }
 
 .hero-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 64px;
+  grid-template-columns: 1fr 1.05fr;
+  gap: 56px;
   align-items: center;
 }
 
@@ -474,44 +475,52 @@ a {
 }
 
 .hero-head {
-  font-size: 42px;
-  font-weight: 700;
-  line-height: 1.3;
+  font-weight: 800;
+  font-size: clamp(40px, 4.6vw, 64px);
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+  margin: 18px 0 24px;
   color: var(--fg-1);
 }
 
 .hero-sub {
-  font-size: 20px;
-  line-height: 1.6;
+  font-size: 18px;
+  line-height: 1.55;
   color: var(--fg-2);
+  max-width: 480px;
+  margin: 0 0 28px;
 }
 
 .hero-bullets {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 24px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px 24px;
+  margin-bottom: 32px;
+  max-width: 520px;
 }
 
 .hero-bullet {
   display: flex;
-  gap: 16px;
+  gap: 10px;
   align-items: flex-start;
 }
 
 .hero-bullet svg {
-  flex-shrink: 0;
-  margin-top: 2px;
   color: var(--orange);
+  flex: none;
+  margin-top: 3px;
 }
 
 .b-top {
-  font-weight: 600;
+  font-weight: 700;
+  font-size: 14px;
   color: var(--fg-1);
+  line-height: 1.3;
 }
 
 .b-bot {
-  font-size: 14px;
-  color: var(--fg-2);
+  font-size: 13px;
+  color: var(--fg-3);
 }
 
 .play-btn {
@@ -620,16 +629,68 @@ a {
 
 /* CTA Banner */
 [data-cta-banner] {
-  background: linear-gradient(135deg, var(--blue) 0%, #1e40af 100%);
-  padding: 48px;
-  border-radius: 12px;
+  background: var(--orange);
+  border-radius: var(--r-xl);
   color: var(--white);
-  text-align: center;
-  min-height: 200px;
+  display: grid;
+  grid-template-columns: 220px 1.4fr 1fr;
+  align-items: center;
+  gap: 32px;
+  padding: 28px 36px;
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-banner .cta-img {
+  height: 200px;
+  border-radius: var(--r-lg);
+  background-image: url('https://images.unsplash.com/photo-1543466835-00a7907e9de1?auto=format&fit=crop&w=600&q=80');
+  background-size: cover;
+  background-position: center;
+}
+
+.cta-banner h2 {
+  font-size: clamp(22px, 2.3vw, 28px);
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 0 0 8px;
+  letter-spacing: -0.015em;
+}
+
+.cta-banner p {
+  color: rgba(255, 255, 255, 0.92);
+  font-size: 14px;
+  margin: 0 0 16px;
+}
+
+.cta-banner .btn.primary {
+  background: var(--white);
+  color: var(--orange);
+  padding: 12px 22px;
+  font-size: 14px;
+}
+
+.cta-banner .btn.primary:hover {
+  background: var(--white);
+  color: var(--orange-dk);
+}
+
+.cta-banner .cta-check {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  gap: 8px;
+}
+
+.cta-banner .cta-check div {
+  display: flex;
   align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.95);
+}
+
+.cta-banner .cta-check svg {
+  flex: none;
 }
 
 /* Quote Cards */
@@ -791,6 +852,15 @@ a {
 
   .section {
     padding: 48px 0;
+  }
+
+  [data-cta-banner] {
+    grid-template-columns: 1fr;
+    padding: 24px;
+  }
+
+  .cta-banner .cta-img {
+    height: 160px;
   }
 }
 
