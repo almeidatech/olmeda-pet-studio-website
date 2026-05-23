@@ -6,6 +6,7 @@
   "author": "Amanda Almeida <hello@amandaalmeidda.com>",
   "main": "src/index.ts",
   "scripts": {
+    "postinstall": "node scripts/setup-assets.js",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
