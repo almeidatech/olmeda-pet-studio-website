@@ -1,4 +1,5 @@
 import React from 'react';
+import { Footer } from '@/components/Footer';
 
 interface PageLayoutProps {
   children: React.ReactNode;
@@ -9,7 +10,7 @@ export function PageLayout({ children }: PageLayoutProps) {
     <>
       <header id="site-header"></header>
       {children}
-      <footer id="site-footer"></footer>
+      <Footer />
     </>
   );
 }
