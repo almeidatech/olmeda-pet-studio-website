@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Olmeda Content System Preview</title>
+  <style>
+    /* Design Tokens */
+    :root {
+      --orange: #FF6A1A;
+      --orange-dk: #E85E0F;
+      --navy: #0B1F3A;
+      --navy-soft: #14294a;
+      --blue: #3B82F6;
+      --off-white: #F7F8FA;
+      --white: #FFFFFF;
+      --gray-100: #E5E7EB;
+      --gray-200: #D1D5DB;
+      --gray-400: #6B7280;
+      --gray-500: #374151;
+      --gray-900: #111111;
+      --fg-1: #111111;
+      --fg-2: #374151;
+      --fg-3: #6B7280;
+      --font-sans: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+      --font-serif: 'Playfair Display', Georgia, serif;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      font-size: 16px;
+      line-height: 1.65;
+      color: var(--fg-1);
+      background: var(--off-white);
+    }
+
+    /* Navigation */
+    header {
+      background: var(--white);
+      border-bottom: 1px solid var(--gray-100);
+      padding: 16px 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    header .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-weight: 800;
+      font-size: 20px;
+      color: var(--navy);
+    }
+
+    nav a {
+      margin-left: 32px;
+      text-decoration: none;
+      color: var(--fg-2);
+      font-size: 14px;
+      transition: color 0.2s;
+    }
+
+    nav a:hover {
+      color: var(--orange);
+    }
+
+    /* Main Content */
+    main {
+      min-height: calc(100vh - 60px);
+      padding: 48px 20px;
+    }
+
+    /* Blog Listing */
+    .blog-listing {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .blog-header {
+      margin-bottom: 48px;
+    }
+
+    .blog-header h1 {
+      font-size: 48px;
+      font-weight: 800;
+      margin-bottom: 16px;
+      line-height: 1.1;
+    }
+
+    .blog-header p {
+      font-size: 18px;
+      color: var(--fg-2);
+      max-width: 500px;
+    }
+
+    .blog-grid {
+      display: grid;
+      gap: 32px;
+    }
+
+    .blog-card {
+      background: var(--white);
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--gray-100);
+      transition: box-shadow 0.2s, transform 0.2s;
+      cursor: pointer;
+    }
+
+    .blog-card:hover {
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.10);
+      transform: translateY(-2px);
+    }
+
+    .blog-card-content {
+      padding: 32px;
+    }
+
+    .blog-card-meta {
+      color: var(--orange);
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 12px;
+    }
+
+    .blog-card h2 {
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 16px;
+      line-height: 1.3;
+      color: var(--fg-1);
+    }
+
+    .blog-card p {
+      color: var(--fg-2);
+      margin-bottom: 16px;
+      line-height: 1.6;
+    }
+
+    .blog-card-footer {
+      display: flex;
+      gap: 16px;
+      font-size: 14px;
+      color: var(--gray-500);
+    }
+
+    /* Blog Post */
+    .blog-post {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .post-header {
+      margin-bottom: 48px;
+    }
+
+    .post-meta {
+      color: var(--orange);
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    .post-header h1 {
+      font-size: 52px;
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 24px;
+    }
+
+    .post-description {
+      font-size: 18px;
+      color: var(--fg-2);
+      margin-bottom: 24px;
+      line-height: 1.6;
+    }
+
+    .post-byline {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      font-size: 14px;
+      color: var(--gray-500);
+      padding-bottom: 24px;
+      border-bottom: 1px solid var(--gray-100);
+    }
+
+    .post-content {
+      margin-top: 48px;
+      line-height: 1.8;
+    }
+
+    .post-content h2 {
+      font-size: 32px;
+      font-weight: 700;
+      margin: 48px 0 24px 0;
+      line-height: 1.2;
+      color: var(--fg-1);
+    }
+
+    .post-content h3 {
+      font-size: 24px;
+      font-weight: 700;
+      margin: 32px 0 16px 0;
+      color: var(--fg-1);
+    }
+
+    .post-content p {
+      margin-bottom: 20px;
+      color: var(--fg-2);
+    }
+
+    .post-content ul {
+      margin: 20px 0 20px 32px;
+      color: var(--fg-2);
+    }
+
+    .post-content li {
+      margin-bottom: 12px;
+      line-height: 1.6;
+    }
+
+    .post-content a {
+      color: var(--orange);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .post-content a:hover {
+      text-decoration: underline;
+    }
+
+    .post-cta {
+      background: var(--orange);
+      color: var(--white);
+      padding: 24px;
+      border-radius: 12px;
+      margin: 48px 0;
+      text-align: center;
+    }
+
+    .post-cta h3 {
+      font-size: 20px;
+      margin-bottom: 12px;
+      color: var(--white);
+    }
+
+    .post-cta a {
+      color: var(--white);
+      display: inline-block;
+      margin-top: 12px;
+      font-weight: 600;
+    }
+
+    .post-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 32px;
+      padding-top: 32px;
+      border-top: 1px solid var(--gray-100);
+    }
+
+    .tag {
+      background: var(--blue);
+      color: var(--white);
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 500;
+    }
+
+    /* Service Page */
+    .service-hero {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-soft) 100%);
+      color: var(--white);
+      padding: 64px 20px;
+      margin-bottom: 48px;
+    }
+
+    .service-hero .container {
+      max-width: 800px;
+    }
+
+    .service-hero h1 {
+      font-size: 48px;
+      font-weight: 800;
+      margin-bottom: 16px;
+      line-height: 1.2;
+    }
+
+    .service-hero p {
+      font-size: 18px;
+      line-height: 1.6;
+      opacity: 0.95;
+      margin-bottom: 24px;
+    }
+
+    .service-meta {
+      display: flex;
+      gap: 32px;
+      font-size: 14px;
+      margin-top: 24px;
+    }
+
+    .service-meta div {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .service-meta-label {
+      opacity: 0.7;
+      font-size: 12px;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+
+    .service-meta-value {
+      font-weight: 600;
+      font-size: 16px;
+    }
+
+    .service-content {
+      max-width: 800px;
+      margin: 0 auto 48px;
+    }
+
+    .service-content h2 {
+      font-size: 32px;
+      font-weight: 700;
+      margin: 40px 0 24px 0;
+      color: var(--fg-1);
+    }
+
+    .service-content h3 {
+      font-size: 22px;
+      font-weight: 700;
+      margin: 32px 0 16px 0;
+      color: var(--fg-1);
+    }
+
+    .service-content p {
+      margin-bottom: 16px;
+      color: var(--fg-2);
+      line-height: 1.8;
+    }
+
+    /* Static Page (About) */
+    .page-content {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .page-content h1 {
+      font-size: 48px;
+      font-weight: 800;
+      margin-bottom: 32px;
+      color: var(--fg-1);
+    }
+
+    .page-content h2 {
+      font-size: 32px;
+      font-weight: 700;
+      margin: 48px 0 24px 0;
+      color: var(--fg-1);
+    }
+
+    .page-content p {
+      margin-bottom: 20px;
+      color: var(--fg-2);
+      line-height: 1.8;
+      font-size: 16px;
+    }
+
+    /* Footer */
+    footer {
+      background: var(--navy);
+      color: var(--white);
+      padding: 48px 20px 24px;
+      margin-top: 80px;
+    }
+
+    footer .container {
+      max-width: 1200px;
+      text-align: center;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding-top: 24px;
+    }
+
+    footer p {
+      font-size: 14px;
+      opacity: 0.8;
+    }
+
+    /* Navigation Tabs */
+    .tabs {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 32px;
+      border-bottom: 2px solid var(--gray-100);
+      max-width: 800px;
+    }
+
+    .tab-button {
+      padding: 12px 20px;
+      background: none;
+      border: none;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--gray-500);
+      cursor: pointer;
+      border-bottom: 3px solid transparent;
+      margin-bottom: -2px;
+      transition: all 0.2s;
+    }
+
+    .tab-button:hover {
+      color: var(--fg-1);
+    }
+
+    .tab-button.active {
+      color: var(--orange);
+      border-bottom-color: var(--orange);
+    }
+
+    .tab-content {
+      display: none;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    /* Button */
+    .btn {
+      display: inline-block;
+      padding: 12px 24px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 14px;
+      transition: all 0.2s;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: var(--orange);
+      color: var(--white);
+    }
+
+    .btn-primary:hover {
+      background: var(--orange-dk);
+    }
+
+    .btn-secondary {
+      background: var(--gray-100);
+      color: var(--fg-1);
+    }
+
+    .btn-secondary:hover {
+      background: var(--gray-200);
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container">
+      <div class="logo">Olmeda Pet Studio</div>
+      <nav>
+        <a href="#blog">Blog</a>
+        <a href="#services">Services</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Navigation Tabs -->
+    <div class="container" style="max-width: 900px; margin: 0 auto 48px;">
+      <div class="tabs">
+        <button class="tab-button active" onclick="showTab('blog-listing')">Blog Listing</button>
+        <button class="tab-button" onclick="showTab('blog-post')">Blog Post</button>
+        <button class="tab-button" onclick="showTab('service')">Service Page</button>
+        <button class="tab-button" onclick="showTab('about')">About Page</button>
+      </div>
+    </div>
+
+    <!-- Tab: Blog Listing -->
+    <div id="blog-listing" class="tab-content active">
+      <section class="blog-listing">
+        <div class="blog-header">
+          <h1>Blog</h1>
+          <p>Growth strategies, SEO tips, and insights for pet business owners</p>
+        </div>
+
+        <div class="blog-grid">
+          <!-- Blog Card 1 -->
+          <div class="blog-card">
+            <div class="blog-card-content">
+              <div class="blog-card-meta">SEO</div>
+              <h2>5 Google Ranking Tips for Pet Grooming Businesses in 2026</h2>
+              <p>Learn 5 proven strategies to improve your pet grooming business's Google ranking and attract more local customers searching for services.</p>
+              <div class="blog-card-footer">
+                <span>May 23, 2026</span>
+                <span>•</span>
+                <span>6 min read</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Blog Card 2 -->
+          <div class="blog-card">
+            <div class="blog-card-content">
+              <div class="blog-card-meta">REVIEWS</div>
+              <h2>How to Generate More Google Reviews for Your Pet Business</h2>
+              <p>A complete system for collecting more customer reviews on Google. Includes templates, timing, and follow-up strategies that actually work.</p>
+              <div class="blog-card-footer">
+                <span>May 15, 2026</span>
+                <span>•</span>
+                <span>5 min read</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- Tab: Blog Post -->
+    <div id="blog-post" class="tab-content">
+      <article class="blog-post">
+        <header class="post-header">
+          <div class="post-meta">SEO</div>
+          <h1>5 Google Ranking Tips for Pet Grooming Businesses in 2026</h1>
+          <p class="post-description">Learn 5 proven strategies to improve your pet grooming business's Google ranking and attract more local customers searching for services.</p>
+          <div class="post-byline">
+            <span>By Amanda Almeida</span>
+            <span>•</span>
+            <span>May 23, 2026</span>
+            <span>•</span>
+            <span>6 min read</span>
+          </div>
+        </header>
+
+        <div class="post-content">
+          <p><strong>Is your pet grooming business losing customers to competitors who rank higher on Google?</strong> You're not alone. Most pet businesses miss out on 70% of potential customers because they don't show up in local search results.</p>
+
+          <h2>1. Claim and Optimize Your Google Business Profile</h2>
+          <p>Your Google Business Profile is the #1 factor for local ranking. Without it, you're invisible to local search.</p>
+
+          <h3>Here's what to do:</h3>
+          <ul>
+            <li>Go to business.google.com</li>
+            <li>Claim your business (verify via postcard if needed)</li>
+            <li>Fill out every section completely:
+              <ul>
+                <li>Business hours (update if seasonal)</li>
+                <li>Services offered (add photos for each)</li>
+                <li>Service areas (list neighborhoods you serve)</li>
+              </ul>
+            </li>
+            <li>Add high-quality photos monthly</li>
+            <li>Respond to all reviews within 48 hours</li>
+          </ul>
+
+          <p><strong>Why it matters:</strong> Google gives 35% of its local ranking weight to Business Profile completeness. A fully optimized profile can move you from page 3 to page 1 in weeks.</p>
+
+          <h2>2. Get Strategic Customer Reviews</h2>
+          <p>Google ranking heavily favors businesses with more recent reviews. But not all reviews are equal.</p>
+
+          <div class="post-cta">
+            <h3>Ready to Rank Higher?</h3>
+            <p>If you want a personalized Google ranking strategy for your pet business, we offer a free audit.</p>
+            <a href="#contact" class="btn btn-primary">Book Your Free Audit →</a>
+          </div>
+
+          <p>Follow these strategies, and you'll see results in 4-8 weeks. The bottom line: Google ranking isn't magic. It's a consistent system of signals.</p>
+        </div>
+
+        <div class="post-tags">
+          <span class="tag">Google Ranking</span>
+          <span class="tag">Local SEO</span>
+          <span class="tag">Pet Business</span>
+          <span class="tag">Google Positioning</span>
+        </div>
+      </article>
+    </div>
+
+    <!-- Tab: Service Page -->
+    <div id="service" class="tab-content">
+      <section class="service-hero">
+        <div class="container">
+          <h1>Google Positioning for Pet Businesses</h1>
+          <p>Your pet business is great. But if customers can't find you on Google, they'll go to your competitors instead.</p>
+          <div class="service-meta">
+            <div>
+              <div class="service-meta-label">Investment</div>
+              <div class="service-meta-value">$5,000–$8,000/month</div>
+            </div>
+            <div>
+              <div class="service-meta-label">Duration</div>
+              <div class="service-meta-value">4 months (minimum)</div>
+            </div>
+            <div>
+              <div class="service-meta-label">Guarantee</div>
+              <div class="service-meta-value">✓ Results or we keep working</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="service-content">
+        <h2>How It Works</h2>
+
+        <h3>Phase 1: Discovery & Audit (Weeks 1-2)</h3>
+        <p>We analyze your current Google ranking for key terms, competitors' strategies, website optimization gaps, and Google Business Profile completeness.</p>
+
+        <h3>Phase 2: Foundation Building (Weeks 3-6)</h3>
+        <p>We optimize the fundamentals: Google Business Profile, website SEO, technical SEO, and content strategy. You'll get a fully optimized profile and website updates.</p>
+
+        <h3>Phase 3: Authority Building (Weeks 7-12)</h3>
+        <p>We build Google's trust in your business through review generation, local backlinks, monthly blog posts, and social proof strategies.</p>
+
+        <h3>Phase 4: Optimization & Scaling (Weeks 13-16)</h3>
+        <p>We analyze what's working and double down. Monitor ranking improvements (target: top 3 for primary keywords) and expand to new opportunities.</p>
+
+        <h2>What You Get</h2>
+        <ul>
+          <li>✅ Guaranteed first-page Google ranking (or we keep working for free)</li>
+          <li>✅ More phone calls and booking requests from local customers</li>
+          <li>✅ Competitive advantage over local competitors</li>
+          <li>✅ Monthly reporting on rankings, reviews, and traffic</li>
+        </ul>
+
+        <p style="margin-top: 48px;">
+          <a href="#contact" class="btn btn-primary">Book Your Free Audit</a>
+          <a href="#resources" class="btn btn-secondary" style="margin-left: 12px;">Download Playbook</a>
+        </p>
+      </section>
+    </div>
+
+    <!-- Tab: About Page -->
+    <div id="about" class="tab-content">
+      <article class="page-content">
+        <h1>About Olmeda Pet Studio</h1>
+
+        <h2>Our Mission</h2>
+        <p>We help pet businesses grow through proven marketing systems. No fluff. No guessing. Just results.</p>
+
+        <h2>Who We Are</h2>
+        <p>Olmeda Pet Studio was founded on a simple insight: most pet businesses have amazing services but terrible marketing. They're invisible on Google, they don't get reviews, and they lose customers to competitors who do this stuff right.</p>
+        <p>We fix that.</p>
+
+        <h2>What We Do</h2>
+        <p>We work with grooming salons, training facilities, boarding services, veterinary clinics, and other pet businesses to:</p>
+        <ul>
+          <li><strong>Dominate Google</strong> — Get found by customers searching for your services</li>
+          <li><strong>Generate Reviews</strong> — Turn happy customers into Google reviews that build trust</li>
+          <li><strong>Run Paid Ads</strong> — Get immediate visibility while organic rankings build</li>
+          <li><strong>Build Websites</strong> — Create websites optimized for customer conversion</li>
+        </ul>
+
+        <h2>Our Results</h2>
+        <p>Over the last 5 years, we've worked with 100+ pet businesses. Here's what's typical:</p>
+        <ul>
+          <li><strong>Google Ranking:</strong> From page 4-5 → Page 1 within 4 months</li>
+          <li><strong>Customer Inquiries:</strong> 3-5x increase in phone calls and bookings</li>
+          <li><strong>Review Growth:</strong> 10-15 new verified reviews monthly</li>
+          <li><strong>ROI:</strong> Positive return within 6 months</li>
+        </ul>
+
+        <p style="margin-top: 48px;">
+          <a href="#contact" class="btn btn-primary">Ready to Grow? Book Your Free Audit</a>
+        </p>
+      </article>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>© 2026 Olmeda Pet Studio. All rights reserved.</p>
+      <p style="margin-top: 12px;">Growth systems that fill your schedule. More visibility. More trust. More bookings.</p>
+    </div>
+  </footer>
+
+  <script>
+    function showTab(tabId) {
+      // Hide all tabs
+      document.querySelectorAll('.tab-content').forEach(tab => {
+        tab.classList.remove('active');
+      });
+      document.querySelectorAll('.tab-button').forEach(btn => {
+        btn.classList.remove('active');
+      });
+
+      // Show selected tab
+      document.getElementById(tabId).classList.add('active');
+      event.target.classList.add('active');
+    }
+  </script>
+</body>
+</html>
