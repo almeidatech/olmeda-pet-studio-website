@@ -2,7 +2,6 @@ import Head from 'next/head';
 import Link from 'next/link';
 import { PageLayout } from '@/layouts/PageLayout';
 import { Card } from '@/components/Card';
-import { MetricCard } from '@/components/MetricCard';
 import { TestCard } from '@/components/TestCard';
 import { ProcessStepCard } from '@/components/ProcessStepCard';
 

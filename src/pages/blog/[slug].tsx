@@ -3,22 +3,21 @@ import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote';
 import { serialize } from 'next-mdx-remote/serialize';
 import { BlogLayout } from '@/layouts/BlogLayout';
 import { getAllBlogPosts, getBlogPostBySlug } from '@/lib/mdx';
-import { CSSProperties } from 'react';
 
-const components = {
-  h2: ({ children }: { children: React.ReactNode }) => (
-    <h2 className="t-h2 mt-48" style={{ marginTop: '48px' }}>
+const components: any = {
+  h2: ({ children, ...props }: any) => (
+    <h2 className="t-h2 mt-48" style={{ marginTop: '48px' }} {...props}>
       {children}
     </h2>
   ),
-  p: ({ children }: { children: React.ReactNode }) => <p className="t-body mt-12" style={{ marginTop: '12px' }}>{children}</p>,
-  ul: ({ children }: { children: React.ReactNode }) => (
-    <ul className="checklist orange mt-16" style={{ marginTop: '16px' }}>
+  p: ({ children, ...props }: any) => <p className="t-body mt-12" style={{ marginTop: '12px' }} {...props}>{children}</p>,
+  ul: ({ children, ...props }: any) => (
+    <ul className="checklist orange mt-16" style={{ marginTop: '16px' }} {...props}>
       {children}
     </ul>
   ),
-  li: ({ children }: { children: React.ReactNode }) => (
-    <li>
+  li: ({ children, ...props }: any) => (
+    <li {...props}>
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
         <circle cx="12" cy="12" r="10" />
         <polyline points="9 12 11 14 15 10" />

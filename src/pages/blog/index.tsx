@@ -2,7 +2,6 @@ import Head from 'next/head';
 import Link from 'next/link';
 import { GetStaticProps } from 'next';
 import { PageLayout } from '@/layouts/PageLayout';
-import { Card } from '@/components/Card';
 import { getAllBlogPosts, BlogPost } from '@/lib/mdx';
 
 interface BlogIndexProps {
