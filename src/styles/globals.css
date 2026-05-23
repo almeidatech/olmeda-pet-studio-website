@@ -1031,6 +1031,238 @@ a {
 }
 
 /* ============================================================
+   Hero Compare Section — Google Business Card Overlays
+   ============================================================ */
+.hero-compare {
+  position: relative;
+  min-height: 600px;
+  isolation: isolate;
+  overflow: visible;
+}
+
+.hero-compare .compare-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  z-index: 0;
+  filter: brightness(1) saturate(1.05);
+}
+
+.hero-compare .compare-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, rgba(247,248,250,.20) 0%, rgba(247,248,250,0) 20%, rgba(247,248,250,0) 70%, rgba(219,234,254,.55) 100%);
+}
+
+.hero-compare::before {
+  content: '';
+  position: absolute;
+  top: -40px; right: -60px;
+  width: 320px; height: 320px;
+  background: radial-gradient(circle, rgba(59,130,246,.35) 0%, rgba(59,130,246,0) 65%);
+  filter: blur(60px);
+  z-index: 2;
+  pointer-events: none;
+}
+
+.hero-compare::after {
+  content: '';
+  position: absolute;
+  bottom: -40px; right: -40px;
+  width: 280px; height: 280px;
+  background: radial-gradient(circle, rgba(59,130,246,.28) 0%, rgba(59,130,246,0) 70%);
+  filter: blur(50px);
+  z-index: 2;
+  pointer-events: none;
+}
+
+.hero-compare .compare-photo {
+  position: absolute; inset: 0;
+  background-image: url('https://images.unsplash.com/photo-1587300003388-59208cc962cb?auto=format&fit=crop&w=1200&q=80');
+  background-size: cover;
+  background-position: center;
+  z-index: 0;
+  display: none; /* kept as fallback if video disabled */
+}
+
+.hero-compare .compare-photo::before {
+  content: '';
+  position: absolute; left: 0; top: 0; bottom: 0; right: 50%;
+  background: linear-gradient(180deg, rgba(170,170,170,.45), rgba(170,170,170,.35));
+  filter: saturate(.2);
+  z-index: 1;
+}
+
+.hero-compare .compare-line {
+  position: absolute;
+  top: 0; bottom: 0;
+  left: 50%;
+  width: 2px;
+  background: var(--orange);
+  z-index: 3;
+}
+
+.hero-compare .compare-handle {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 36px; height: 36px; border-radius: 50%;
+  background: var(--white);
+  display: grid; place-items: center;
+  color: var(--orange);
+  box-shadow: var(--sh-sm);
+  z-index: 4;
+  font-weight: 700;
+}
+
+.compare-labels {
+  position: absolute;
+  top: 6px; left: 0; right: 0;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 36px;
+  z-index: 5;
+  pointer-events: none;
+}
+
+.compare-labels span {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--fg-3);
+}
+
+.compare-labels span.right { color: var(--blue); }
+
+.hero-compare .compare-line {
+  background: linear-gradient(180deg, transparent 0%, var(--orange) 12%, var(--orange) 88%, transparent 100%);
+}
+
+/* Google Business Listing Card Overlays */
+.listing-card {
+  position: absolute;
+  background: var(--white);
+  border-radius: var(--r-lg);
+  box-shadow: 0 12px 32px rgba(11,31,58,.18), 0 2px 8px rgba(11,31,58,.08);
+  padding: 14px;
+  width: 220px;
+  z-index: 5;
+  font-size: 12px;
+  backdrop-filter: blur(2px);
+}
+
+.listing-card.bad { left: 24px; top: 64px; animation: floatA 6s ease-in-out infinite; }
+.listing-card.good { right: 24px; top: 64px; animation: floatB 6s ease-in-out infinite .8s; }
+
+@keyframes floatA {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes floatB {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .listing-card.bad, .listing-card.good { animation: none; }
+}
+
+.listing-card .lc-photo {
+  height: 70px;
+  border-radius: 8px;
+  background: linear-gradient(135deg,#bdc6d4,#8e9aae);
+  margin-bottom: 10px;
+  background-size: cover;
+  background-position: center;
+}
+
+.listing-card.bad .lc-photo {
+  background-image: url('https://images.unsplash.com/photo-1587397845856-e6cf49176c70?auto=format&fit=crop&w=400&q=70');
+  filter: saturate(.3) brightness(.92);
+}
+
+.listing-card.good .lc-photo {
+  background-image: url('https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=400&q=80');
+}
+
+.listing-card h4 {
+  font-size: 13px; font-weight: 700; margin: 0 0 4px; line-height: 1.25;
+}
+
+.listing-card .lc-rating { display: flex; align-items: center; gap: 4px; font-size: 11px; margin-bottom: 2px; }
+.listing-card .lc-rating .stars { color: #FFB300; letter-spacing: -1px; font-size: 12px; }
+
+.listing-card .lc-meta { font-size: 11px; color: var(--fg-3); margin-bottom: 10px; }
+.listing-card .lc-meta .closed { color: var(--red); }
+.listing-card .lc-meta .open { color: var(--green); }
+
+.listing-card .lc-actions { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; margin-bottom: 8px; }
+.listing-card .lc-actions .act {
+  display: flex; flex-direction: column; align-items: center; gap: 3px;
+  font-size: 9px; font-weight: 600; padding: 6px 0;
+  border-radius: 6px;
+  background: var(--blue-ice); color: var(--blue);
+}
+
+.listing-card.bad .lc-actions .act { background: var(--gray-50); color: var(--gray-500); }
+.listing-card.bad .lc-actions .act:nth-child(4) { display: none; }
+.listing-card.bad .lc-actions { grid-template-columns: repeat(3, 1fr); }
+
+.listing-card .lc-bullets { display: flex; flex-direction: column; gap: 5px; margin-top: 8px; }
+.listing-card .lc-bullets div { display: flex; gap: 6px; font-size: 11px; align-items: center; }
+.listing-card .lc-bullets div .x { color: var(--red); font-weight: 700; }
+.listing-card .lc-bullets div .c { color: var(--green); font-weight: 700; }
+
+.listing-card .lc-map {
+  height: 60px;
+  background: #E5EAF2;
+  border-radius: 6px;
+  background-image:
+    linear-gradient(45deg, rgba(0,0,0,.04) 25%, transparent 25%, transparent 75%, rgba(0,0,0,.04) 75%),
+    linear-gradient(45deg, rgba(0,0,0,.04) 25%, transparent 25%, transparent 75%, rgba(0,0,0,.04) 75%);
+  background-size: 8px 8px;
+  background-position: 0 0, 4px 4px;
+  position: relative;
+  margin-bottom: 8px;
+}
+
+.listing-card .lc-map::after {
+  content: ''; position: absolute;
+  left: 50%; top: 50%;
+  transform: translate(-50%,-50%);
+  width: 16px; height: 16px;
+  background: var(--red);
+  -webkit-mask: url('data:image/svg+xml;utf8,<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C8 2 5 5 5 9c0 5 7 13 7 13s7-8 7-13c0-4-3-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;utf8,<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C8 2 5 5 5 9c0 5 7 13 7 13s7-8 7-13c0-4-3-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>') center/contain no-repeat;
+}
+
+.listing-card .lc-photos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; margin: 8px 0; }
+.listing-card .lc-photos div {
+  aspect-ratio: 1;
+  background: var(--gray-100);
+  border-radius: 4px;
+  background-size: cover; background-position: center;
+}
+
+.listing-card .lc-photos div:nth-child(1) { background-image: url('https://images.unsplash.com/photo-1551717743-49959800b1f6?auto=format&fit=crop&w=200&q=70'); }
+.listing-card .lc-photos div:nth-child(2) { background-image: url('https://images.unsplash.com/photo-1559190394-df5a28aab5c5?auto=format&fit=crop&w=200&q=70'); }
+.listing-card .lc-photos div:nth-child(3) { background-image: url('https://images.unsplash.com/photo-1581888227599-779811939961?auto=format&fit=crop&w=200&q=70'); }
+
+@media (max-width: 1000px) {
+  .hero-grid { grid-template-columns: 1fr; gap: 36px; }
+  .hero-compare { min-height: 420px; }
+  .listing-card { width: 180px; padding: 10px; }
+}
+
+/* ============================================================
    FOOTER
    ============================================================ */
 .footer {
