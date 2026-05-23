@@ -15,7 +15,10 @@ This project separates **design** from **implementation**:
 
 ### View Both Versions
 
-**Design (Static HTML):**
+**Design (Static HTML) — Online Preview:**
+🔗 **[View Design Online](https://amandaalmeidda.github.io/olmeda-website/)** ← Share this link with your developer
+
+Or run locally:
 ```bash
 npm run serve:design
 # Opens http://localhost:8000 — pure HTML/CSS with no JavaScript
