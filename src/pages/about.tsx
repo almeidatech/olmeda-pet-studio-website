@@ -13,7 +13,7 @@ export default function About() {
         <meta property="og:description" content="We're a team of marketers and pet parents who build growth systems for veterinary clinics and dog daycares." />
       </Head>
 
-      <PageLayout>
+      <PageLayout navActive="about">
       <section className="page-hero" style={{ paddingTop: '64px', paddingBottom: '32px' }}>
         <div className="wrap">
           <div className="grid-2" style={{ gridTemplateColumns: '1fr 1.05fr', gap: '48px', alignItems: 'center' }}>

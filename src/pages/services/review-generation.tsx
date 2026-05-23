@@ -14,7 +14,7 @@ export default function ReviewGeneration() {
         <meta property="og:description" content="Automated systems that turn happy pet parents into 5-star reviews — without feeling pushy." />
       </Head>
 
-      <PageLayout>
+      <PageLayout navActive="services">
         <section className="page-hero">
           <div className="wrap">
             <div className="breadcrumb">

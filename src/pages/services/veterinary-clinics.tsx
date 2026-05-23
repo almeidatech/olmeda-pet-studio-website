@@ -14,7 +14,7 @@ export default function VeterinaryClinics() {
         <meta property="og:description" content="Growth systems built for independent veterinary clinics fighting corporate chains for visibility and trust." />
       </Head>
 
-      <PageLayout>
+      <PageLayout navActive="services">
         <section className="page-hero">
           <div className="wrap">
             <div className="breadcrumb">

@@ -13,7 +13,7 @@ export default function Contact() {
         <meta property="og:description" content="Get in touch with the Olmeda Pet Studio team. Real responses, no chatbots, no pressure." />
       </Head>
 
-      <PageLayout>
+      <PageLayout navActive="contact">
         <section className="page-hero">
         <div className="wrap">
           <div className="breadcrumb">

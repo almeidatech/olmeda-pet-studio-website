@@ -13,7 +13,7 @@ export default function Services() {
         <meta property="og:description" content="The 3-pillar growth system: Google Positioning, Visible Trust, and the Conversion Engine. Built for pet care businesses." />
       </Head>
 
-      <PageLayout>
+      <PageLayout navActive="services">
       <section className="page-hero">
         <div className="wrap">
           <div className="breadcrumb">

@@ -14,7 +14,7 @@ export default function WebDesignSeo() {
         <meta property="og:description" content="Websites that rank, convert, and book. Built specifically for veterinary clinics and dog daycares." />
       </Head>
 
-      <PageLayout>
+      <PageLayout navActive="services">
         <section className="page-hero">
           <div className="wrap">
             <div className="breadcrumb">

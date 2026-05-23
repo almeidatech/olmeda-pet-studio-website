@@ -1,14 +1,16 @@
 import React from 'react';
+import Navbar from '@/components/Navbar';
 import { Footer } from '@/components/Footer';
 
 interface PageLayoutProps {
   children: React.ReactNode;
+  navActive?: string; // e.g., 'home', 'services', 'blog'
 }
 
-export function PageLayout({ children }: PageLayoutProps) {
+export function PageLayout({ children, navActive }: PageLayoutProps) {
   return (
     <>
-      <header id="site-header"></header>
+      <Navbar active={navActive} />
       {children}
       <Footer />
     </>

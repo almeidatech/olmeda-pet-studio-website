@@ -4,6 +4,7 @@ import { PageLayout } from '@/layouts/PageLayout';
 import { Card } from '@/components/Card';
 import { TestCard } from '@/components/TestCard';
 import { ProcessStepCard } from '@/components/ProcessStepCard';
+import CtaBanner from '@/components/CtaBanner';
 
 export default function Home() {
   return (
@@ -392,7 +393,9 @@ export default function Home() {
 
       {/* CTA BANNER + FOOTER */}
       <section className="section-sm">
-        <div className="wrap"><div data-cta-banner></div></div>
+        <div className="wrap">
+          <CtaBanner />
+        </div>
       </section>
 
       </PageLayout>

@@ -13,7 +13,7 @@ export default function PaidAdvertising() {
         <meta property="og:description" content="Google Ads and Meta campaigns built around real ROI. Every dollar tracked back to booked appointments." />
       </Head>
 
-      <PageLayout>
+      <PageLayout navActive="services">
         <section className="page-hero">
           <div className="wrap">
             <div className="breadcrumb">

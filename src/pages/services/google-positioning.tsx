@@ -13,7 +13,7 @@ export default function GooglePositioning() {
         <meta property="og:description" content="Be the first vet or daycare pet parents see. Local SEO, Google Business Profile, and Maps ranking that drive bookings." />
       </Head>
 
-      <PageLayout>
+      <PageLayout navActive="services">
       <section className="page-hero">
         <div className="wrap">
           <div className="breadcrumb">

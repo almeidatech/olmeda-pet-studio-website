@@ -14,7 +14,7 @@ export default function DogDaycares() {
         <meta property="og:description" content="Daycares and boarding facilities targeting premium clients and 85%+ year-round occupancy." />
       </Head>
 
-      <PageLayout>
+      <PageLayout navActive="services">
         <section className="page-hero">
           <div className="wrap">
           <div className="breadcrumb">
