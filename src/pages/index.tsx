@@ -82,7 +82,7 @@ export default function Home() {
             <div className="hero-visual">
               <div className="hero-compare">
                 <video className="compare-video" autoPlay muted loop playsInline preload="metadata" poster="https://images.unsplash.com/photo-1587300003388-59208cc962cb?auto=format&fit=crop&w=1200&q=80">
-                  <source src="/assets/video/hero-dog.mp4" type="video/mp4" />
+                  <source src="assets/video/hero-dog.mp4" type="video/mp4" />
                 </video>
                 <div className="compare-overlay" aria-hidden="true"></div>
                 <div className="compare-labels">
