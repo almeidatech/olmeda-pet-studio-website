@@ -11,7 +11,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint src --ext .ts,.tsx",
-    "format": "prettier --write src"
+    "format": "prettier --write src",
+    "serve:design": "http-server design -p 8000 -o"
   },
   "dependencies": {
     "@mdx-js/loader": "^3.1.1",
@@ -30,6 +31,7 @@
     "@types/react-dom": "^18.2.0",
     "eslint": "^9.39.4",
     "eslint-config-next": "^16.2.6",
+    "http-server": "^14.1.0",
     "prettier": "^3.0.0",
     "typescript": "^5.0.0"
   }

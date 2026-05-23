@@ -2,6 +2,35 @@
 
 A modern Next.js website for Olmeda Pet Studio, featuring blog content management with MDX, responsive design, and SEO optimization.
 
+---
+
+## 🎨 Design vs Implementation
+
+This project separates **design** from **implementation**:
+
+| Folder | Purpose | Who? |
+|--------|---------|------|
+| **`/design`** | Pure HTML/CSS static templates — source of truth for how the site should look | Designer/Amanda |
+| **`/src`** | React/Next.js implementation — dynamic, data-driven production code | Developer |
+
+### View Both Versions
+
+**Design (Static HTML):**
+```bash
+npm run serve:design
+# Opens http://localhost:8000 — pure HTML/CSS with no JavaScript
+```
+
+**Implementation (React/Next.js):**
+```bash
+npm run dev
+# Opens http://localhost:3000+ — full Next.js app with dynamic features
+```
+
+**Why this matters:** Your developer references `/design` to see exactly what you designed, then converts it to React components while preserving your design intent.
+
+---
+
 ## Quick Start (For Developers)
 
 ```bash

@@ -1,0 +1,49 @@
+<svg viewBox="0 0 800 300" xmlns="http://www.w3.org/2000/svg" width="800" height="300">
+  
+  <g transform="translate(80, 80)">
+    
+    <circle cx="60" cy="60" r="57" fill="none" stroke="#FFFFFF" stroke-width="3"></circle>
+
+    
+    <g fill="#FFFFFF">
+      
+      <circle cx="48" cy="55" r="16"></circle>
+      
+      <ellipse cx="38" cy="42" rx="6" ry="10"></ellipse>
+      <ellipse cx="58" cy="42" rx="6" ry="10"></ellipse>
+      
+      <ellipse cx="48" cy="63" rx="8" ry="6"></ellipse>
+      
+      <ellipse cx="65" cy="75" rx="14" ry="17"></ellipse>
+      
+      <rect x="58" y="88" width="4" height="12" rx="2"></rect>
+      <rect x="70" y="88" width="4" height="12" rx="2"></rect>
+    </g>
+
+    
+    <g fill="#FF6A1A">
+      <polygon points="80,35 83,42 91,42 84,47 87,54 80,49 73,54 76,47 69,42 77,42"></polygon>
+    </g>
+  </g>
+
+  
+  <line x1="160" y1="40" x2="160" y2="200" stroke="#FFFFFF" stroke-width="2"></line>
+
+  
+  <g>
+    
+    <text x="200" y="110" font-family="Inter, Arial, sans-serif" font-size="56" font-weight="700" fill="#FFFFFF" letter-spacing="2">
+      OLMEDA
+    </text>
+
+    
+    <text x="200" y="155" font-family="Inter, Arial, sans-serif" font-size="48" font-weight="700" fill="#FF6A1A" letter-spacing="1">
+      PET STUDIO
+    </text>
+
+    
+    <text x="200" y="190" font-family="Inter, Arial, sans-serif" font-size="16" font-weight="400" fill="#FFFFFF" letter-spacing="1.5" text-transform="uppercase">
+      GROWTH SYSTEMS FOR PET BUSINESSES
+    </text>
+  </g>
+</svg>

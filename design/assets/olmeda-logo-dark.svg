@@ -1,0 +1,32 @@
+<svg viewBox="0 0 240 240" xmlns="http://www.w3.org/2000/svg" width="240" height="240">
+  <defs>
+    
+  </defs>
+
+  
+  <circle cx="120" cy="120" r="115" class="circle-border"></circle>
+
+  
+  
+  <g transform="translate(120, 120) scale(0.45)">
+    
+    <ellipse cx="0" cy="15" rx="35" ry="40" fill="#FFFFFF"></ellipse>
+    
+    <circle cx="-15" cy="-25" r="28" fill="#FFFFFF"></circle>
+    
+    <ellipse cx="-15" cy="-5" rx="16" ry="14" fill="#FFFFFF"></ellipse>
+    
+    <ellipse cx="-40" cy="-45" rx="10" ry="22" fill="#FFFFFF"></ellipse>
+    
+    <ellipse cx="10" cy="-45" rx="10" ry="22" fill="#FFFFFF"></ellipse>
+    
+    <rect x="-15" y="50" width="7" height="20" rx="3" fill="#FFFFFF"></rect>
+    
+    <rect x="8" y="50" width="7" height="20" rx="3" fill="#FFFFFF"></rect>
+  </g>
+
+  
+  <g transform="translate(160, 70)">
+    <polygon points="0,-8 2.4,-2.4 8,-2.4 3.2,2 5.6,7.6 0,3.2 -5.6,7.6 -3.2,2 -8,-2.4 -2.4,-2.4" class="star"></polygon>
+  </g>
+</svg>
