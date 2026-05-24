@@ -18,9 +18,11 @@ export default async function handler(_req: NextApiRequest, res: NextApiResponse
     try {
       const ctrl = new AbortController();
       const timer = setTimeout(() => ctrl.abort(), 1500);
+      // Any HTTP response (even 401/404) means the server is alive.
+      // Only network errors / timeouts mark it unreachable.
       const r = await fetch(`${url}/auth/v1/health`, { signal: ctrl.signal });
       clearTimeout(timer);
-      supabase_reachable = r.ok || r.status === 404;
+      supabase_reachable = r.status > 0;
     } catch {
       supabase_reachable = false;
     }
